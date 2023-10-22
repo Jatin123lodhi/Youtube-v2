@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { YOUTUBE_VIDEO_API } from "../utils/constants";
 import { VideoCard } from "./VideoCard";
 import { useEffect } from "react";
@@ -10,16 +10,15 @@ export const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
   const [pageToken, setPageToken] = useState("");
   
-  let region = useSelector((store)=>store.app.region);
+  const region = useSelector((store)=>store.app.region);
   //console.log(region,' subscripbed')
   const YOUTUBE_API = YOUTUBE_VIDEO_API+'&regionCode='+region; 
-  //console.log(YOUTUBE_API,'  &&&&')
   
   useEffect(() => {
     getYoutubeVideosDataOnRegionUpdate(YOUTUBE_API);
   }, [region]);
 
-  const getYoutubeVideosDataOnRegionUpdate = async (API) => {
+  const getYoutubeVideosDataOnRegionUpdate = async (API:string) => {
     const data = await fetch(API);
     const json = await data.json();
     console.log('  data:  ',json)
@@ -27,8 +26,7 @@ export const VideoContainer = () => {
   };
   
   // on infinite call
-  const getYoutubeVideosData = async (API) => {
-    //console.log(API,'  API ')
+  const getYoutubeVideosData = async (API:string) => {
     const data = await fetch(API);
     const json = await data.json();
     setVideos((prev) => [...prev, ...json.items]);
@@ -48,8 +46,6 @@ export const VideoContainer = () => {
       window.scrollY + window.innerHeight + 1 >=
       document.documentElement.scrollHeight
     ) {
-      // console.log("call >>>", pageToken, "<<<<");
-      // console.log("call >>>", token, "<<<<");
       getYoutubeVideosData(YOUTUBE_API + "&pageToken=" + pageToken);
     }
   };

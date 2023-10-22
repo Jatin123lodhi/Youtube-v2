@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
-import { SEARCH_RESULTS_API, SEARCH_RESULTS_BY_LOCATOIN } from '../utils/constants';
+import { SEARCH_RESULTS_API, 
+  // SEARCH_RESULTS_BY_LOCATOIN
+ } from '../utils/constants';
 import { Link } from 'react-router-dom';
 const ResultCard = (info)=>{
   //console.log(info.id.videoId,'  info');
   const {snippet} = info;
-   const {channelTitle,title,thumbnails,description,publishTime} = snippet;
+   const {channelTitle,title,thumbnails,description,
+    // publishTime
+  } = snippet;
   //  const {viewCount} = statistics;
   return (
     <div className='flex items-center p-2 border shadow-lg w-full h-52'>

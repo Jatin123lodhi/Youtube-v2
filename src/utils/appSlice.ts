@@ -1,11 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+
+interface AppState{
+    isSideBarOpen: boolean,
+    region: string
+}
+
+const initialState: AppState = {
+    isSideBarOpen : true,
+    region: 'IN'
+}
 
 const appSlice = createSlice({
     name: 'app',
-    initialState:{
-        isSideBarOpen : true,
-        region: 'IN'
-    },
+    initialState,
     reducers:{
         toggleSideBar : (state)=>{
             state.isSideBarOpen = !state.isSideBarOpen;
@@ -13,7 +20,7 @@ const appSlice = createSlice({
         hideSideBar : (state)=>{
             state.isSideBarOpen = false;
         },
-        changeRegion: (state,action)=>{
+        changeRegion: (state,action: PayloadAction<string>)=>{
             state.region = action.payload;
         }
     }

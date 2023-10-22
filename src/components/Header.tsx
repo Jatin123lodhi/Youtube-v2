@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { changeRegion, toggleSideBar } from "../utils/appSlice";
 import { logo, SEARCH_SUGGEST_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
+import { useAppSelector } from "../utils/hooks";
 
 const SearchSVG = () => {
   return (
@@ -29,7 +30,7 @@ export const Header = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestion, setShowSuggestion] = useState(false);
   const dispatch = useDispatch();
-  const searchCache = useSelector((store) => store.search);
+  const searchCache = useAppSelector((store) => store.search);
   const navigate = useNavigate();
   useEffect(() => {
     //we have to make this call after 200ms
@@ -47,7 +48,6 @@ export const Header = () => {
     const data = await fetch(SEARCH_SUGGEST_API + searchQuery);
     const json = await data.json();
     setSuggestions(json[1]);
-    //console.log(json[1]);
     const obj = {
       [searchQuery]: json[1],
     };

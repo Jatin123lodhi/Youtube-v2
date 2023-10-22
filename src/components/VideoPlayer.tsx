@@ -1,6 +1,5 @@
-import React from "react";
 
-export const VideoPlayer = ({param}) => {
+export const VideoPlayer = ({param}:{param: string | null}) => {
   console.log(param,'  searchparam in video player')
   return (
     <div>

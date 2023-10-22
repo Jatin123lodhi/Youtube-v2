@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addChat } from "../utils/chatSlice";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { Message, addChat } from "../utils/chatSlice";
 import { generateRandomMessage, generateRandomName } from "../utils/helper";
-import { store } from "../utils/store";
+import { useAppSelector } from "../utils/hooks";
  
-const LiveComment = ({ commentData }) => {
-  //console.log(commentData);
+
+const LiveComment = (props: Message) => {
+  const {name,message} = props
   return (
     <div className="m-2 p-2 flex ">
       <img
@@ -14,8 +15,8 @@ const LiveComment = ({ commentData }) => {
         src= "https://yt3.ggpht.com/X9eoDIB9cgb1s-kvATRs1lQDcU4Fjc15NDV9s9FF8ck7IsA8u7OdijaernoDV9LLdePgjlt_=s88-c-k-c0x00ffffff-no-rj"
       />
       <div className="">
-        <div className="font-bold mx-2">Warikoo {commentData.name}</div>
-        <div className="mx-2 ">{commentData.message}</div>
+        <div className="font-bold mx-2">Warikoo {name}</div>
+        <div className="mx-2 ">{message}</div>
       </div>
     </div>
   );
@@ -25,7 +26,7 @@ export const LiveChat = () => {
   
   const [liveMessage, setLiveMessage] = useState("");
   const dispatch = useDispatch();
-  const chatMessages = useSelector((store) => store.liveChat.messages);
+  const chatMessages = useAppSelector((store) => store.liveChat.messages);
   useEffect(()=>{
     const i = setInterval(()=>{         // API POLLING
       dispatch(addChat({
@@ -40,7 +41,7 @@ export const LiveChat = () => {
     <div className=" pb-2 h-full bg-gray-200 w-[26rem]">
       <div className="p-2 mb-2 font-bold text-gray-600 shadow">LiveChat</div>     
       <div className="mb-2 bg-gray-200 shadow h-[454px] flex flex-col-reverse overflow-y-scroll">  
-        {chatMessages.map((message, index) => <LiveComment commentData={message} key={index} />)}
+        {chatMessages.map((message, index) => <LiveComment {...message} key={index} />)}
       </div>
 
       {/* img input btn */}

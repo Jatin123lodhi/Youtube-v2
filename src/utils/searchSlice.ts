@@ -1,15 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+
+interface SearchState{
+    [key:string]: string[]
+}
+
+const initialState:SearchState = {
+    // ip : ["iphone","iphone11","iphone14"]    
+}
 
 const searchSlice = createSlice({
     name: "search",
-    initialState : {
-
-    },
+    initialState,
     reducers:{
-        cacheResults : (state,action)=>{
-            // {ip : ["iphone","iphone11","iphone14"]}
-            // console.log(action.payload,'**** action.payload')
-             
+        cacheResults : (state,action:PayloadAction<SearchState>)=>{
             state =  Object.assign(state, action.payload);
         }
     }

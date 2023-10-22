@@ -1,13 +1,12 @@
-import React from 'react'
-import { getRandomAvtar } from '../utils/helper';
+// import { getRandomAvtar } from '../utils/helper';
 
-export const VideoCard = ({info}) => {
-    
-   //console.log(info, '   what info is~~~')
-   const {snippet, statistics} = info;
+import { VideoCardInfo } from "../types/VideoCard";
+
+export const VideoCard = (props: VideoCardInfo) => {
+  const {snippet,statistics} = props
    const {channelTitle,title,thumbnails} = snippet;
    const {viewCount} = statistics;
-   let views = Number(viewCount);
+   let views: string | number = Number(viewCount);
    if(views>1000000){
     views = views/1000000 
     views = views.toFixed(2);

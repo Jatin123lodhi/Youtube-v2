@@ -1,12 +1,16 @@
  
 import { configureStore } from '@reduxjs/toolkit';
-import appSlice from './appSlice'
-import searchSlice from './searchSlice';
-import chatSlice from './chatSlice';
+import appReducer from './appSlice'
+import searchReducer from './searchSlice';
+import chatReducer from './chatSlice';
 export const store =  configureStore({
     reducer:{
-        app: appSlice,
-        search : searchSlice,
-        liveChat: chatSlice,
+        app: appReducer,
+        search : searchReducer,
+        liveChat: chatReducer,
     }
 });
+
+export type RootState = ReturnType<typeof store.getState>
+
+export type AppDispatch = typeof store.dispatch
