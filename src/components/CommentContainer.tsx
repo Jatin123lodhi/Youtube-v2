@@ -12,7 +12,7 @@ const Comment = (props: IComment) => {
       <img
         className="rounded-full w-12 h-12"
         alt="img"
-        src="https://yt3.ggpht.com/X9eoDIB9cgb1s-kvATRs1lQDcU4Fjc15NDV9s9FF8ck7IsA8u7OdijaernoDV9LLdePgjlt_=s88-c-k-c0x00ffffff-no-rj"
+        src="./warikoPic.jpg"
       />
       <div>
         <div className="font-bold mx-2">Warikoo {name}</div>

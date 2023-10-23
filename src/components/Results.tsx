@@ -13,7 +13,7 @@ const ResultCard = (props:VideoData)=>{
   return (
     <div className='flex items-center p-2 border shadow-lg w-full h-52'>
        <div className=' h-40  overflow-hidden rounded-lg flex items-center border border-gray-300'>
-        <img className='h-56 w-52 lg:w-full'  src={thumbnails.high.url} alt='someImg'  />
+        <img className='h-56 w-52 lg:w-full'  src={thumbnails?.high?.url} alt='someImg'  />
        </div>
        <div className='p-1 m-2 '>
         <ul>
