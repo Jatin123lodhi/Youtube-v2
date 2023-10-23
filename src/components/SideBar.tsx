@@ -1,9 +1,9 @@
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../utils/hooks";
 
 export const SideBar = () => {
-  const isVisible = useSelector((store) => store.app.isSideBarOpen);
-  //console.log(isVisible)
+  const isVisible = useAppSelector((store) => store.app.isSideBarOpen);
+
   if (isVisible == false) return;
   return (
     <div className="flex flex-col m-2 p-2 ">

@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { changeRegion, toggleSideBar } from "../utils/appSlice";
 import { logo, SEARCH_SUGGEST_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
-import { useAppSelector } from "../utils/hooks";
+import { useAppDispatch, useAppSelector } from "../utils/hooks";
 
 const SearchSVG = () => {
   return (
@@ -26,10 +25,10 @@ const SearchSVG = () => {
 };
 
 export const Header = () => {
-  const [searchQuery, setsearchQuery] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
+  const [searchQuery, setsearchQuery] = useState<string>("");
+  const [suggestions, setSuggestions] = useState<string[]>([]);
   const [showSuggestion, setShowSuggestion] = useState(false);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const searchCache = useAppSelector((store) => store.search);
   const navigate = useNavigate();
   useEffect(() => {
@@ -59,7 +58,7 @@ export const Header = () => {
     console.log("clicked");
     dispatch(toggleSideBar());
   };
-  window.addEventListener("click", function (e) {
+  window.addEventListener("click", function (e:MouseEvent) {
     //console.log(document.getElementById("suggestion_box"))
     //console.log(document.getElementById("search_input"))
     if (document.getElementById("suggestion_box")?.contains(e.target)|| document.getElementById("search_input")?.contains(e.target)   ) {

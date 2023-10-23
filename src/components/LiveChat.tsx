@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import { Message, addChat } from "../utils/chatSlice";
 import { generateRandomMessage, generateRandomName } from "../utils/helper";
-import { useAppSelector } from "../utils/hooks";
+import { useAppDispatch, useAppSelector } from "../utils/hooks";
  
 
 const LiveComment = (props: Message) => {
@@ -25,7 +24,7 @@ const LiveComment = (props: Message) => {
 export const LiveChat = () => {
   
   const [liveMessage, setLiveMessage] = useState("");
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const chatMessages = useAppSelector((store) => store.liveChat.messages);
   useEffect(()=>{
     const i = setInterval(()=>{         // API POLLING

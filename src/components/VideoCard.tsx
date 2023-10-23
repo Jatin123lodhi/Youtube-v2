@@ -1,8 +1,6 @@
-// import { getRandomAvtar } from '../utils/helper';
+import { VideoData } from "../types/VideoCard";
 
-import { VideoCardInfo } from "../types/VideoCard";
-
-export const VideoCard = (props: VideoCardInfo) => {
+export const VideoCard = (props: VideoData) => {
   const {snippet,statistics} = props
    const {channelTitle,title,thumbnails} = snippet;
    const {viewCount} = statistics;

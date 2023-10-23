@@ -4,19 +4,19 @@ import { VideoCard } from "./VideoCard";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { makeid } from "../utils/helper";
-import { useSelector } from "react-redux";
+import { useAppSelector } from "../utils/hooks";
+import { VideoData } from "../types/VideoCard";
 
 export const VideoContainer = () => {
-  const [videos, setVideos] = useState([]);
+  const [videos, setVideos] = useState<VideoData[]>([]);
   const [pageToken, setPageToken] = useState("");
   
-  const region = useSelector((store)=>store.app.region);
-  //console.log(region,' subscripbed')
+  const region = useAppSelector((store)=>store.app.region);
   const YOUTUBE_API = YOUTUBE_VIDEO_API+'&regionCode='+region; 
   
   useEffect(() => {
     getYoutubeVideosDataOnRegionUpdate(YOUTUBE_API);
-  }, [region]);
+  }, [region,YOUTUBE_API]);
 
   const getYoutubeVideosDataOnRegionUpdate = async (API:string) => {
     const data = await fetch(API);
@@ -58,7 +58,7 @@ export const VideoContainer = () => {
       {videos?.map((video) => (
         <Link to={"/watch?v=" + video.id} key={makeid()}>
           {" "}
-          <VideoCard info={video} />
+          <VideoCard {...video} />
         </Link>
       ))}
       {/* <Link to={'/watch?v='+ videos[0].id} key={videos[0].id} ><VideoCard  info={videos[0]} /></Link> */}

@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import { SEARCH_RESULTS_API, 
   // SEARCH_RESULTS_BY_LOCATOIN
  } from '../utils/constants';
 import { Link } from 'react-router-dom';
-const ResultCard = (info)=>{
-  //console.log(info.id.videoId,'  info');
-  const {snippet} = info;
+import { VideoData } from '../types/VideoCard';
+const ResultCard = (props:VideoData)=>{
+  
+  const {snippet} = props;
    const {channelTitle,title,thumbnails,description,
-    // publishTime
   } = snippet;
-  //  const {viewCount} = statistics;
   return (
     <div className='flex items-center p-2 border shadow-lg w-full h-52'>
        <div className=' h-40  overflow-hidden rounded-lg flex items-center border border-gray-300'>
@@ -51,10 +50,6 @@ export const Results = () => {
       {results?.map((result)=>{
         return <Link to={"/watch?v=" + result.id.videoId}><ResultCard {...result}  /></Link>
       })}
-    {/* {console.log(results[0].id.videoId,' ****')}  */}
-      {/* {  results.length!==0 && <ResultCard {...results[0]}/>} */}
     </div>
-    // results.length!==0 && <ResultCard {...results[0]}/>
-
   )
 }

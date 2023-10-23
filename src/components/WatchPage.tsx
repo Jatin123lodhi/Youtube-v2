@@ -1,20 +1,18 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { hideSideBar } from "../utils/appSlice";
 import { CommentContainer } from "./CommentContainer";
 import { LiveChat } from "./LiveChat";
 import { RealtedVideoCard } from "./RealtedVideoCard";
 import { VideoPlayer } from "./VideoPlayer";
+import { useAppDispatch } from "../utils/hooks";
 
 export const WatchPage = () => {
-  // to id comming from url useParam
   window.scroll(0, 0);
   const [searchParams] = useSearchParams();
-  //console.log(searchParams.get("v"));
 
   //we have to dispatch an action so that side  collapses
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(hideSideBar());
   }, []);

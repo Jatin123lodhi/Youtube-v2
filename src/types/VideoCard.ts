@@ -1,4 +1,4 @@
-export interface VideoCardInfo {
+export interface VideoData {
     kind: string
     etag: string
     id: string
