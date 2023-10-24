@@ -34,22 +34,23 @@ export const VideoContainer = () => {
   };
 
   useEffect(() => {
+
+    const handelInfiniteScroll = () => {
+      if (
+        window.scrollY + window.innerHeight + 1 >=
+        document.documentElement.scrollHeight
+      ) {
+        getYoutubeVideosData(YOUTUBE_API + "&pageToken=" + pageToken);
+      }
+    };
+
     window.addEventListener("scroll", handelInfiniteScroll);
     return () => {
       window.removeEventListener("scroll", handelInfiniteScroll);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageToken]);
  
-
-  const handelInfiniteScroll = () => {
-    if (
-      window.scrollY + window.innerHeight + 1 >=
-      document.documentElement.scrollHeight
-    ) {
-      getYoutubeVideosData(YOUTUBE_API + "&pageToken=" + pageToken);
-    }
-  };
-
   return (
     <div
       className=" flex flex-wrap justify-center py-2  my-2    "
@@ -57,11 +58,9 @@ export const VideoContainer = () => {
     >
       {videos?.map((video) => (
         <Link to={"/watch?v=" + video.id} key={makeid()}>
-          {" "}
           <VideoCard {...video} />
         </Link>
       ))}
-      {/* <Link to={'/watch?v='+ videos[0].id} key={videos[0].id} ><VideoCard  info={videos[0]} /></Link> */}
     </div>
   );
 };
