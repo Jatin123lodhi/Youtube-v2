@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import { SEARCH_RESULTS_API } from "../utils/constants";
+
 import { Link } from "react-router-dom";
 import { IResults } from "../types/Results";
-const ResultCard = (props: IResults) => {
+import { fetchResultsAsync } from "../utils/resultSlice";
+import { useAppDispatch, useAppSelector } from "../utils/hooks";
+export const ResultCard = (props: IResults) => {
   const { snippet } = props;
   const { channelTitle, title, thumbnails, description } = snippet;
   return (
@@ -38,17 +40,13 @@ const ResultCard = (props: IResults) => {
 
 export const Results = () => {
   const [searchParams] = useSearchParams();
-  const [results, setResults] = useState<IResults[]>([]);
-  console.log(searchParams.get("search_query"), " search query");
+
+  const results = useAppSelector((state) => state.result.results);
+
   const searchQuery = searchParams.get("search_query");
+  const dispatch = useAppDispatch();
   useEffect(() => {
-    const getResults = async () => {
-      const data = await fetch(SEARCH_RESULTS_API + "&q=" + searchQuery);
-      const json = await data.json();
-      console.log(json.items);
-      setResults(json.items);
-    };
-    getResults();
+    dispatch(fetchResultsAsync(searchQuery!));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery]);
 
@@ -56,7 +54,7 @@ export const Results = () => {
     <div className="mt-5 m-2 p-6 border border-gray-400">
       {results?.map((result) => {
         return (
-          <Link to={"/watch?v=" + result.id.videoId}>
+          <Link key={result.id.videoId} to={"/watch?v=" + result.id.videoId}>
             <ResultCard {...result} />
           </Link>
         );
