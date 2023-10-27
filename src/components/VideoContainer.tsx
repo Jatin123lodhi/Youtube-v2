@@ -56,11 +56,11 @@ export const VideoContainer = () => {
       className=" flex flex-wrap justify-center py-2  my-2    "
       id="videoContainer"
     >
-      {videos?.map((video) => (
+      {/* {videos?.map((video) => (
         <Link to={"/watch?v=" + video.id} key={makeid()}>
           <VideoCard {...video} />
         </Link>
-      ))}
+      ))} */}
     </div>
   );
 };

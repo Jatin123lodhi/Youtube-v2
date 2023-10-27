@@ -5,7 +5,7 @@ interface SearchState{
 }
 
 const initialState:SearchState = {
-    // ip : ["iphone","iphone11","iphone14"]    
+    //{ iph : ["iphone","iphone11","iphone14"] }   
 }
 
 const searchSlice = createSlice({
@@ -13,6 +13,12 @@ const searchSlice = createSlice({
     initialState,
     reducers:{
         cacheResults : (state,action:PayloadAction<SearchState>)=>{
+             
+            const key = Object.keys(action.payload)[0]   
+            const keys = Object.keys(state)
+            console.log(Object.keys(state))  
+       
+            if(!keys.find(k=>k===key))
             state =  Object.assign(state, action.payload);
         }
     }

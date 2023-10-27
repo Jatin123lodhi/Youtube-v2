@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "../utils/hooks";
 import SearchSVG from "../assets/SearchSVG";
 import HamIcon from "../assets/HamIcon";
 import UserIcon from "../assets/UserIcon";
+import SearchIcon from "../assets/SearchIcon";
 
 
 
@@ -22,6 +23,7 @@ export const Header = () => {
     const i = setTimeout(() => {
       if (searchCache[searchQuery]) {
         setSuggestions(searchCache[searchQuery]);
+        console.log('search query exists')
       } else {
         if(searchQuery.length>=3)
         getSearchResults();
@@ -86,20 +88,7 @@ export const Header = () => {
           />
           {/* search btn with 🔍 icon */}
           <button className=" bg-gray-200  border border-gray-300 rounded-r-full  w-14 pl-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 text-gray-500"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-              />
-            </svg>
+            <SearchIcon/>
           </button>
         </div>
         {/* the div which shows up on focus of input field */}
