@@ -11,12 +11,14 @@ export const SideBar = () => {
       <div className="border m-2 p-2 ">
         <ul>
           <li className="p-2 hover:bg-gray-200">
-            <div className="flex items-center ">
-              <Link to="/">
-                <HomeIcon/>
+            <Link to="/">
+              <div className="flex items-center ">
+                <div>
+                  <HomeIcon />
+                </div>
                 <div>Home</div>
-              </Link>
-            </div>
+              </div>
+            </Link>
           </li>
           <li className="p-2 hover:bg-gray-200">Shorts</li>
           <li className="p-2 hover:bg-gray-200">Subscriptions</li>

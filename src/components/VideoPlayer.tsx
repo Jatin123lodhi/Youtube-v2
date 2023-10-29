@@ -1,8 +1,14 @@
 
-export const VideoPlayer = ({param}:{param: string | null}) => {
+interface IVideoPlayerProps{
+  param: string | null
+}
+
+export const VideoPlayer = (props:IVideoPlayerProps) => {
+  const {param} = props
   console.log(param,'  searchparam in video player')
+  //let's get the video data with useSelector  and 
   return (
-    <div>
+    <div className="">
       <div className="border ">
         <iframe
           width="905"
@@ -15,6 +21,7 @@ export const VideoPlayer = ({param}:{param: string | null}) => {
         ></iframe>
         <ul className=" mr-10">
           <li className="text-2xl m-2">
+            {/* title */}
             A Comprehensive Guide to Flexbox Sizing
           </li>
           <li>
@@ -29,6 +36,7 @@ export const VideoPlayer = ({param}:{param: string | null}) => {
                     />
                   </div>
                   <div className=" mx-1">
+                    {/* channel name and subscirbers */}
                     <div className="font-bold">Envato tuts+</div>
                     <div className="text-sm">1.2M Subscribers</div>
                   </div>
@@ -40,6 +48,7 @@ export const VideoPlayer = ({param}:{param: string | null}) => {
                 </div>
                 <div className="flex items-center">
                   <div>
+                    {/* likes count */}
                     <button className="border-r border-gray-300 hover:bg-gray-300 rounded-l-full px-4 py-2 ">
                       Like 197
                     </button>

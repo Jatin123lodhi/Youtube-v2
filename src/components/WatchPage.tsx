@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { hideSideBar } from "../utils/appSlice";
 import { CommentContainer } from "./CommentContainer";
 import { LiveChat } from "./LiveChat";
@@ -9,7 +9,8 @@ import { useAppDispatch, useAppSelector } from "../utils/hooks";
 
 export const WatchPage = () => {
   window.scroll(0, 0);
-
+  const location = useLocation();
+  console.log(location.state)
   //params
   const [searchParams] = useSearchParams();
   

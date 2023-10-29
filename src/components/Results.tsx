@@ -5,6 +5,34 @@ import { Link } from "react-router-dom";
 import { IResults } from "../types/Results";
 import { fetchResultsAsync } from "../utils/resultSlice";
 import { useAppDispatch, useAppSelector } from "../utils/hooks";
+
+
+export const Results = () => {
+  const [searchParams] = useSearchParams();
+
+  const results = useAppSelector((state) => state.result.results);
+
+  const searchQuery = searchParams.get("search_query");
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchResultsAsync(searchQuery!));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchQuery]);
+
+  return (
+    <div className="mt-5 m-2 p-6 border border-gray-400">
+      {results?.map((result) => {
+        return (
+          <Link key={result.id.videoId} to={"/watch?v=" + result.id.videoId}>
+            <ResultCard {...result} />
+          </Link>
+        );
+      })}
+    </div>
+  );
+};
+
+
 export const ResultCard = (props: IResults) => {
   const { snippet } = props;
   const { channelTitle, title, thumbnails, description } = snippet;
@@ -34,31 +62,6 @@ export const ResultCard = (props: IResults) => {
           <li className="text-gray-500 mt-4">{description}</li>
         </ul>
       </div>
-    </div>
-  );
-};
-
-export const Results = () => {
-  const [searchParams] = useSearchParams();
-
-  const results = useAppSelector((state) => state.result.results);
-
-  const searchQuery = searchParams.get("search_query");
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(fetchResultsAsync(searchQuery!));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchQuery]);
-
-  return (
-    <div className="mt-5 m-2 p-6 border border-gray-400">
-      {results?.map((result) => {
-        return (
-          <Link key={result.id.videoId} to={"/watch?v=" + result.id.videoId}>
-            <ResultCard {...result} />
-          </Link>
-        );
-      })}
     </div>
   );
 };
