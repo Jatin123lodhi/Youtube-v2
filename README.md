@@ -7,10 +7,6 @@ Welcome to the React TypeScript YouTube Frontend application! This project is a 
 1. [Project Overview](#project-overview)
 2. [Key Features](#key-features)
 3. [Getting Started](#getting-started)
-4. [State Management with Redux Toolkit](#state-management-with-redux-toolkit)
-5. [Routing with Redux Router DOM v6](#routing-with-redux-router-dom-v6)
-6. [Data Fetching with Youtube API](#data-fetching-with-youtube-api)
-7. [Caching for Improved Performance](#caching-for-improved-performance)
  
  
 
