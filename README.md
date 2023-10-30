@@ -8,8 +8,8 @@ Welcome to the React TypeScript YouTube Frontend application! This project is a 
 2. [Key Features](#key-features)
 3. [Getting Started](#getting-started)
 4. [State Management with Redux Toolkit](#state-management-with-redux)
-5. [Routing with Redux Router DOM](#routing-with-redux-router-dom)
-6. [Data Fetching with YouTube API](#data-fetching-with-youtube-api)
+5. [Routing with Redux Router DOM v6](#routing-with-redux-router-dom)
+6. [YouTube API Data Fetching](#data-fetching-with-youtube-api)
 7. [Caching for Improved Performance](#caching-for-improved-performance)
  
  
@@ -20,11 +20,11 @@ The React TypeScript YouTube Frontend application is a modern, interactive, and 
 
 ## Key Features
 
-### 1. Managed App State using Redux
+### 1. State Management with Redux Toolkit
 
-- This application harnesses the power of Redux to manage the application's state effectively. Redux facilitates centralized state management and ensures that user interactions are seamlessly integrated into the application's flow.
+- This application harnesses the power of Redux Toolkit to manage the application's state effectively. Redux facilitates centralized state management and ensures that user interactions are seamlessly integrated into the application's flow.
 
-### 2. Routing through Redux Router DOM
+### 2. Routing with Redux Router DOM v6
 
 - Redux Router DOM is employed for handling application navigation. It ensures a smooth and intuitive user experience while exploring the application's various features and content.
 
