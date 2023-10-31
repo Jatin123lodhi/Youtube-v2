@@ -22,7 +22,7 @@ The React TypeScript YouTube Frontend application is a modern, interactive, and 
 
 ### 2. Routing with Redux Router DOM v6
 
-- Redux Router DOM is employed for handling application navigation. It ensures a smooth and intuitive user experience while exploring the application's various features and content.
+- Redux Router DOM v6 is employed for handling application navigation. It ensures a smooth and intuitive user experience while exploring the application's various features and content.
 
 ### 3. Data Fetching with Youtube api
 
