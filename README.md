@@ -7,7 +7,7 @@ Welcome to the React TypeScript YouTube Frontend application! This project is a 
 1. [Project Overview](#project-overview)
 2. [Key Features](#key-features)
 3. [Getting Started](#getting-started)
- 
+4. [Redux State Diagram](#redux-state-diagram) 
  
 
 ## Project Overview
@@ -58,6 +58,8 @@ To begin using the React TypeScript YouTube Frontend application, follow these s
 1. Clone the repository to your local machine.
 2. Install the necessary dependencies using `npm install` or `yarn install`.
 3. Obtain a YouTube Data API key from the [YouTube Developer Console](https://console.developers.google.com/).
- 
+
+## Redux state diagram
+![Screenshot 2023-10-31 144122](https://github.com/Jatin123lodhi/Youtube-v2/assets/90623311/e292868d-1f9b-4cd4-bbc1-7708545e915e) 
 
 #### Note- Search functionality works only when cors is enabled in browser through extension
