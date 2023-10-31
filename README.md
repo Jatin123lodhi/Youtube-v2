@@ -37,7 +37,7 @@ The React TypeScript YouTube Frontend application is a modern, interactive, and 
 - To optimize search functionality, the application implements debouncing. This ensures that API requests are made only after a certain delay, preventing excessive requests and reducing server load.
 
 ### 6. Live Chat
-- Replicated the Live Chat feature in watch page where you can send message 
+- Replicated the Live Chat feature in watch page where you can send message using API Polling
 
 ### 7. Nested Comments
 - Created a nested comments view using recursion
