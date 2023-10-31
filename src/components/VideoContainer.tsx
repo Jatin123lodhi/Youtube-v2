@@ -1,46 +1,37 @@
-import { useState } from "react";
-import { YOUTUBE_VIDEO_API } from "../utils/constants";
+// import { useState } from "react";
+// import { YOUTUBE_VIDEO_API } from "../utils/constants";
 import { VideoCard } from "./VideoCard";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { makeid } from "../utils/helper";
-import { useAppSelector } from "../utils/hooks";
-import { VideoData } from "../types/VideoCard";
+import { useAppDispatch, useAppSelector } from "../utils/hooks";
+ 
+import { fetchNextPageVideos, fetchVideos } from "../utils/appSlice";
+// import { useAppSelector } from "../utils/hooks";
+// import { VideoData } from "../types/VideoCard";
 
 export const VideoContainer = () => {
-  const [videos, setVideos] = useState<VideoData[]>([]);
-  const [pageToken, setPageToken] = useState("");
-  
-  const region = useAppSelector((store)=>store.app.region);
-  const YOUTUBE_API = YOUTUBE_VIDEO_API+'&regionCode='+region; 
-  
-  useEffect(() => {
-    getYoutubeVideosDataOnRegionUpdate(YOUTUBE_API);
-  }, [region,YOUTUBE_API]);
+   
 
-  const getYoutubeVideosDataOnRegionUpdate = async (API:string) => {
-    const data = await fetch(API);
-    const json = await data.json();
-    console.log('  data:  ',json)
-    setVideos(json.items);
-  };
+  const nextPageToken = useAppSelector(state=>state.app.nextPageToken)
+  const region = useAppSelector(state=>state.app.region)
+  const dispatch = useAppDispatch()
+
+  useEffect(()=>{
+    dispatch(fetchVideos(region))
+  },[region])
   
-  // on infinite call
-  const getYoutubeVideosData = async (API:string) => {
-    const data = await fetch(API);
-    const json = await data.json();
-    setVideos((prev) => [...prev, ...json.items]);
-    setPageToken(json.nextPageToken)
-  };
+  const videos = useAppSelector(state=>state.app.videos)
+
 
   useEffect(() => {
-
     const handelInfiniteScroll = () => {
       if (
-        window.scrollY + window.innerHeight + 1 >=
+        window.scrollY + window.innerHeight >=
         document.documentElement.scrollHeight
       ) {
-        getYoutubeVideosData(YOUTUBE_API + "&pageToken=" + pageToken);
+        
+        dispatch(fetchNextPageVideos({region,nextPageToken}))
       }
     };
 
@@ -49,14 +40,17 @@ export const VideoContainer = () => {
       window.removeEventListener("scroll", handelInfiniteScroll);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageToken]);
+  }, [nextPageToken]);
+ 
+
   
   return (
     <div
-      className=" flex flex-wrap justify-center py-2  my-2    "
+      className=" flex flex-wrap justify-center py-2  my-2"
       id="videoContainer"
     >
-      {videos?.map((video) => (
+      {videos.length===0 && <div>Loading...</div>}
+      { videos?.map((video) => (
         <Link to={"/watch?v=" + video.id} key={makeid()}>
           <VideoCard {...video} />
         </Link>

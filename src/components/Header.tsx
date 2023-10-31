@@ -59,10 +59,10 @@ export const Header = () => {
           <HamIcon/>
         </button>
 
-        <a href="/" className="flex items-center font-sans">
+        <Link to="/" className="flex items-center font-sans">
           <img className="p-2 my-2 w-16" src={logo} alt="youtube icon" />
           <span className="text-2xl  ">Youtube </span>
-        </a>
+        </Link>
         
       </div>
       {/* middle section */}
@@ -94,7 +94,7 @@ export const Header = () => {
         {/* the div which shows up on focus of input field */}
         {suggestions.length !== 0 && showSuggestion && (
           <div
-            className="z-10 p-2 m-2   shadow-xl bg-blue-400 border-2 border-gray-300  rounded-lg h-max md:w-96 lg:w-[34rem] absolute "
+            className="z-10 p-2 m-2   shadow-xl bg-white border-2 border-gray-300  rounded-lg h-max md:w-96 lg:w-[34rem] absolute "
             id="suggestion_box"
           >
             <ul>
@@ -129,7 +129,7 @@ export const Header = () => {
       {/* right part -     user icon  */}
       <div className="flex items-center mr-4">
         <div className="m-2">
-          <select className="w-12 border bg-gray-200" onChange={(e)=>{dispatch(changeRegion(e.target.value))}}>
+          <select className=" border rounded-md bg-slate-200 px-2 " onChange={(e)=>{dispatch(changeRegion(e.target.value))}}>
             <option value='IN' title="INDIA">IN</option>
             <option value='US' title="United State">US</option>
             <option value='AE' title="Arab">AE</option>

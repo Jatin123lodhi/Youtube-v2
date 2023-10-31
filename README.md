@@ -41,6 +41,16 @@ The React TypeScript YouTube Frontend application is a modern, interactive, and 
 
 ### 7. Nested Comments
 - Created a nested comments view using recursion
+
+### 8. Infinite Scroll
+- As we scroll down a new videos comes up
+
+### 9. Fetching Data depending upon different region
+- Fetching the data using youtube api depending upon region
+
+### 10. Playing the video on hover
+- Implemented the concept of video playing on hover
+
 ## Getting Started
 
 To begin using the React TypeScript YouTube Frontend application, follow these steps:

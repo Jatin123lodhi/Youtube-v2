@@ -4,7 +4,7 @@ export const VideoCard = (props: VideoData) => {
   const { snippet, statistics } = props;
   const { channelTitle, title, thumbnails } = snippet;
   const { viewCount } = statistics;
-  
+
   //state
   const [isVideoPlaying, setIsVideoPlaying] = useState<boolean>(false);
 
@@ -32,7 +32,7 @@ export const VideoCard = (props: VideoData) => {
       videoRef.current.pause();
     }
   }, [isVideoPlaying]);
-   
+
   return (
     <div
       className="my-1 mx-2 w-72 h-64"
@@ -43,7 +43,9 @@ export const VideoCard = (props: VideoData) => {
         <li className=" h-40 overflow-hidden rounded-lg flex items-center relative">
           <img className={`h-56 `} src={thumbnails.high.url} alt="videoImg" />
           <video
-            className={`absolute inset-0 transition-opacity duration-200 ${isVideoPlaying ? "opacity-100 delay-200": "opacity-0"}`}
+            className={`absolute inset-0 transition-opacity duration-200 ${
+              isVideoPlaying ? "opacity-100 delay-200" : "opacity-0"
+            }`}
             width={"100%"}
             height={"100%"}
             src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
@@ -51,7 +53,6 @@ export const VideoCard = (props: VideoData) => {
             muted
             playsInline
           />
-
 
           <div className="bg-black text-white absolute rounded right-1 bottom-1 px-1 text-sm">
             11:40
