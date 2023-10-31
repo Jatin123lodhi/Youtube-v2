@@ -20,7 +20,7 @@ export const Results = () => {
   }, [searchQuery]);
 
   return (
-    <div className="mt-5 m-2 p-6 border border-gray-400">
+    <div className="mt-5 m-2 p-6">
       {results?.map((result) => {
         return (
           <Link key={result.id.videoId} to={"/watch?v=" + result.id.videoId}>
