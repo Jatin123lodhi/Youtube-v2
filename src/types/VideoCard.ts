@@ -1,3 +1,5 @@
+import { Default } from "./Results"
+
 export interface VideoData {
     kind: string
     etag: string
@@ -6,57 +8,30 @@ export interface VideoData {
     contentDetails: ContentDetails
     statistics: Statistics
   }
-  
-  export interface Snippet {
-    publishedAt: string
-    channelId: string
-    title: string
-    description: string
-    thumbnails: Thumbnails
-    channelTitle: string
+
+  export interface CommonSnippet {
+    publishedAt: string;
+    channelId: string;
+    title: string;
+    description: string;
+    thumbnails: Thumbnails;
+    channelTitle: string;
+    liveBroadcastContent: string
+  }
+
+  export interface Snippet extends CommonSnippet{
     tags: string[]
     categoryId: string
-    liveBroadcastContent: string
     localized: Localized
     defaultAudioLanguage: string
   }
-  
+
   export interface Thumbnails {
     default: Default
-    medium: Medium
-    high: High
-    standard: Standard
-    maxres: Maxres
-  }
-  
-  export interface Default {
-    url: string
-    width: number
-    height: number
-  }
-  
-  export interface Medium {
-    url: string
-    width: number
-    height: number
-  }
-  
-  export interface High {
-    url: string
-    width: number
-    height: number
-  }
-  
-  export interface Standard {
-    url: string
-    width: number
-    height: number
-  }
-  
-  export interface Maxres {
-    url: string
-    width: number
-    height: number
+    medium: Default
+    high: Default
+    standard:  Default
+    maxres: Default
   }
   
   export interface Localized {
